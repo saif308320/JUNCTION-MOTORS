@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Reserve | Junction Motors Rental</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <section class="page-hero" style="padding:0">
+    <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1800&q=80" alt="Night drive" />
+    <div class="hero-copy">
+      <p class="crumb"><a href="index.html">Home</a> / Reserve</p>
+      <p class="kicker">Reservations</p>
+      <h1>Request the car. We confirm within the hour.</h1>
+    </div>
+  </section>
+  <section>
+    <div class="wrap" style="max-width:760px">
+      <p class="sub">This is a request, not an instant hold. A concierge checks the hub and writes back with confirmation or an alternative. Performance cars may need a security hold before we lock the dates.</p>
+      <form id="bookForm">
+        <div class="row2">
+          <div><label>Full name</label><input required name="name" placeholder="Your name" /></div>
+          <div><label>Email</label><input required type="email" name="email" placeholder="you@company.com" /></div>
+        </div>
+        <div class="row2">
+          <div><label>Phone</label><input name="phone" placeholder="+1 …" /></div>
+          <div>
+            <label>City hub</label>
+            <select name="city">
+              <option>New York</option>
+              <option>London</option>
+              <option>Los Angeles</option>
+              <option>Chicago</option>
+              <option>Miami</option>
+              <option>San Francisco</option>
+              <option>Other / ask concierge</option>
+            </select>
+          </div>
+        </div>
+        <div class="row2">
+          <div><label>Pickup date</label><input required type="date" name="start" /></div>
+          <div><label>Return date</label><input required type="date" name="end" /></div>
+        </div>
+        <div>
+          <label>Vehicle</label>
+          <select name="car" id="carSelect">
+            <option>Mercedes S-Class</option>
+            <option>Range Rover Autobiography</option>
+            <option>Ferrari Roma</option>
+            <option>BMW 7 Series</option>
+            <option>Porsche Cayenne</option>
+            <option>Audi R8</option>
+            <option>Advise me</option>
+          </select>
+        </div>
+        <div>
+          <label>Add-ons</label>
+          <select name="extra">
+            <option>None</option>
+            <option>Airport meet-and-greet</option>
+            <option>Chauffeur (hourly)</option>
+            <option>Chauffeur (full day)</option>
+            <option>Additional driver</option>
+            <option>Child seat</option>
+          </select>
+        </div>
+        <div><label>Notes</label><textarea name="notes" rows="4" placeholder="Flight number, hotel, chauffeur, extra driver..."></textarea></div>
+        <button class="btn" type="submit">Submit reservation request</button>
+        <p class="ok" id="bookOk">Request received. A concierge will email you shortly with availability.</p>
+      </form>
+    </div>
+  </section>
+  <script src="js/site.js"></script>
+  <script>
+    const car = new URLSearchParams(location.search).get("car");
+    if (car) {
+      const sel = document.getElementById("carSelect");
+      for (const o of sel.options) if (o.value === car) sel.value = car;
+    }
+    document.getElementById("bookForm").onsubmit = (e) => {
+      e.preventDefault();
+      document.getElementById("bookOk").style.display = "block";
+      e.target.reset();
+    };
+  </script>
+</body>
+</html>

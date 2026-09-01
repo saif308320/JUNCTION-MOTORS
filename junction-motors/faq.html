@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FAQ | Junction Motors Rental</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <section class="page-hero" style="padding:0">
+    <img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=1800&q=80" alt="Fleet garage" />
+    <div class="hero-copy">
+      <p class="crumb"><a href="index.html">Home</a> / FAQ</p>
+      <p class="kicker">Before you book</p>
+      <h1>Answers we give every week.</h1>
+    </div>
+  </section>
+  <section>
+    <div class="wrap narrow">
+      <div class="tabs" id="faqTabs">
+        <button class="tab on" data-tab="hire">Hire</button>
+        <button class="tab" data-tab="ins">Insurance</button>
+        <button class="tab" data-tab="pay">Payment</button>
+      </div>
+      <div class="panel-set">
+        <div id="hire">
+          <article class="feature" style="margin-bottom:16px"><h3>What do I need to collect?</h3><p class="muted">A valid licence held for the minimum period on the vehicle page, a second form of ID, and a credit card in the hirer’s name. International licences require an English translation or IDP where the law asks for one.</p></article>
+          <article class="feature" style="margin-bottom:16px"><h3>Can someone else drive?</h3><p class="muted">Yes. Additional drivers must meet the same age and licence rules and be named before the car leaves. Fee: $18 / day, capped at $90.</p></article>
+          <article class="feature"><h3>What if my flight is late?</h3><p class="muted">Send the number. We track it. International arrivals include 45 minutes of wait. After that, waiting is billed at the chauffeur hourly rate if a driver is assigned.</p></article>
+        </div>
+        <div id="ins" class="hidden">
+          <article class="feature" style="margin-bottom:16px"><h3>What cover is included?</h3><p class="muted">Comprehensive motor insurance with a stated excess. Excess amounts are confirmed on the reservation. Reduction products are available except on some performance cars.</p></article>
+          <article class="feature" style="margin-bottom:16px"><h3>Track days?</h3><p class="muted">Not permitted. Timed events, launches, and closed-circuit use void cover. We will not release a performance car if we believe that is the plan.</p></article>
+          <article class="feature"><h3>What happens if the car is damaged?</h3><p class="muted">Photograph, call the visor number, do not drive if unsafe. We arrange recovery and a replacement when one is available. Excess applies unless a third party is identified and accepted by insurers.</p></article>
+        </div>
+        <div id="pay" class="hidden">
+          <article class="feature" style="margin-bottom:16px"><h3>How do I pay?</h3><p class="muted">Credit card at confirmation. A security hold is placed at delivery on performance cars. Corporate accounts invoice monthly on Net 15.</p></article>
+          <article class="feature" style="margin-bottom:16px"><h3>Cancellation?</h3><p class="muted">Full refund 72 hours before start for sedans and SUVs. 7 days for performance. Inside that window, 50% unless we re-let the dates.</p></article>
+          <article class="feature"><h3>Fuel?</h3><p class="muted">Full to full. If you return short, we refuel at pump plus $25. We do not sell prepaid tanks.</p></article>
+        </div>
+      </div>
+    </div>
+  </section>
+  <script src="js/site.js"></script>
+  <script>
+    const map = { hire: "hire", ins: "ins", pay: "pay" };
+    document.querySelectorAll("#faqTabs .tab").forEach(t => {
+      t.onclick = () => {
+        document.querySelectorAll("#faqTabs .tab").forEach(x => x.classList.toggle("on", x === t));
+        Object.keys(map).forEach(k => document.getElementById(k).classList.toggle("hidden", k !== t.dataset.tab));
+      };
+    });
+  </script>
+</body>
+</html>
